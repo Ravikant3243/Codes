@@ -5,10 +5,7 @@ int main(){
   int t;
   cin>>t;
   while(t--){
-      int a,b,x;
-      cin>>a>>b>>x;
-      cout<<(b-a)/x;
-      cout<<endl;
+     
   }
 return 0;
 }
