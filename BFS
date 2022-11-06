@@ -1,0 +1,16 @@
+void bfs(int s,vector<int>adj[],vector<int>&ans,vector<bool>&vis){
+    queue<int>q;
+    q.push(s);
+    vis[s]=true;
+    while(q.empty()==false){
+        int v=q.front();
+        q.pop();
+        ans.push_back(v);
+        for(auto e:adj[v]){
+            if(!vis[e]){
+                q.push(e);
+                vis[e]=true;
+            }
+        }
+    }
+}
