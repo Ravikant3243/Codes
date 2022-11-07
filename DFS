@@ -1,0 +1,7 @@
+void dfs(int s,vector<int>adj[],vector<bool>&vis,vector<int>&ans){
+        vis[s]=true;
+        ans.push_back(s);
+        for(auto e:adj[s]){
+            if(!vis[e])dfs(e,adj,vis,ans);
+        }
+    }
