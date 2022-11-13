@@ -1,0 +1,11 @@
+ll binPow(ll base,ll exp){
+
+  ll res=1;
+  ll mult=base;
+  while(exp){
+    if(exp&1)res=res*mult;
+    mult=mult*mult;
+    exp>>=1;
+  }
+  return res;
+}
