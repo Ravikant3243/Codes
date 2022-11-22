@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+
+#define ll long long
+#define mod (int(1e9 + 7))
+#define vvi vector<vector<int>>
+#define vi vector<int>
+#define lp(i, a, b, c) for (int i = a; i < b; i += c)
+#define eb(x) emplace_back(x)
+#define srt(nums) sort(nums.begin(), nums.end())
+#define fastio ios_base::sync_with_stdio(false), cin.tie(NULL)
+#define endl "\n"
+using namespace std;
+ll imx=1000000;
+vector<bool>seive(1000001,true);
+void normalSeive(){
+
+for(ll i=2;i*i<=imx;i++){
+  if(seive[i]){
+  for(ll j=i*i;j<=imx;j+=i)seive[j]=false;
+  }
+}
+}
+
+void genPrimes(vector<ll>&primes,int n){
+  for(int i=2;i<=n;i++)if(seive[i])primes.eb(i);
+
+}
+
+int main()
+{
+normalSeive();
+  int t;
+  cin >> t;
+  while (t--)
+  {
+   vector<ll>primes;
+  ll l,r;
+  cin>>l>>r;
+  //step1 genrate all the primes which are responsible for marking in the given range;
+
+
+  genPrimes(primes,sqrt(r));
+  //step2 create a dummy array of size r-l+1;
+  vector<int>dummy(r-l+1,1);
+  for(int i=0;i<primes.size();i++){
+    ll start=l+(l%primes[i]);
+    for(int j=max(start,primes[i]*primes[i]);j<=r;j+=primes[i]){
+        
+         dummy[j-l]=0;
+    }
+  }
+  lp(i,0,r-l+1,1)if(dummy[i])cout<<l+i<<" ";
+  cout<<endl;
+  }
+
+  return 0;
+}
